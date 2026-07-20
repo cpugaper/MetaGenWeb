@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parent Model Integration Guide — MetaGen</title>
+<meta name="description" content="Step-by-step guide to integrating new parent characters into MetaGen: Mendelian trait configuration, facial geometry extraction, morph target generation and Mutable integration.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bg-glow" aria-hidden="true"></div>
+
+<header class="site-header" id="site-header">
+  <div class="container header-inner">
+    <a href="index.html#home" class="brand">
+      MetaGen
+    </a>
+
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html#home" class="nav-link">Home</a>
+      <a href="index.html#results" class="nav-link">Results</a>
+      <a href="index.html#about" class="nav-link">About</a>
+      <a href="index.html#development" class="nav-link">Development</a>
+      <a href="guide.html" class="nav-link active">Guide</a>
+      <a href="index.html#feedback" class="nav-link">Feedback</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="https://github.com/cpugaper/MetaGen" class="btn btn-ghost btn-small" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        GitHub
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ GUIDE INTRO ============ -->
+  <section class="guide-hero">
+    <div class="container">
+      <a href="index.html#home" class="back-link reveal">&larr; Back to MetaGen</a>
+      <p class="eyebrow reveal">For Developers</p>
+      <h1 class="guide-title reveal">Parent model integration guide</h1>
+      <p class="guide-intro-desc reveal">
+        This guide details the technical workflow required to prepare, import, and configure
+        new parent models within MetaGen's genetic inheritance system.
+      </p>
+      <div class="guide-meta reveal">
+        <span class="step-tag">Unreal Engine 5</span>
+        <span class="step-tag">Blender</span>
+      </div>
+      <div class="hero-actions reveal">
+        <a href="assets/downloads/GeneticChild_Template.blend" class="btn btn-primary">
+          Download GeneticChild_Template.blend
+          <svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true"><path d="M8 2v9m0 0l-3.5-3.5M8 11l3.5-3.5M3 14h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GUIDE BODY ============ -->
+  <section class="section guide-body-section">
+    <div class="container guide-layout">
+
+      <aside class="guide-sidebar reveal">
+        <nav class="toc" aria-label="Guide sections">
+          <p class="toc-label">On this page</p>
+          <a href="#trait-configuration" class="toc-link" data-toc>01 &middot; Trait configuration</a>
+          <a href="#geometry-extraction" class="toc-link" data-toc>02 &middot; Geometry extraction</a>
+          <a href="#morph-generation" class="toc-link" data-toc>03 &middot; Morph generation</a>
+          <a href="#mutable-integration" class="toc-link" data-toc>04 &middot; Mutable integration</a>
+        </nav>
+        <div class="sidebar-download">
+          <p class="sidebar-download-label">Production files</p>
+          <a href="assets/downloads/GeneticChild_Template.blend" class="btn btn-ghost btn-small btn-block">Download .blend</a>
+        </div>
+      </aside>
+
+      <div class="guide-content">
+
+        <!-- ---------- 01 ---------- -->
+        <article class="guide-section reveal" id="trait-configuration">
+          <p class="guide-step-num">01</p>
+          <h2>Mendelian trait configuration</h2>
+          <span class="step-tag">Unreal Engine 5</span>
+          <p class="guide-lead">The first step is to register the new parent's basic genetic data in the system's data tables.</p>
+
+          <ol class="guide-steps">
+            <li>Open the <code>DT_Parents</code> data table and add a new row for each new parent model you want to integrate.</li>
+            <li>Enter the corresponding data: name, image, eye color, skin tone, hair texture, and hair color.</li>
+            <li>Leave the <code>MorphPrefix</code> variable empty for now &mdash; it gets filled in during step 04.</li>
+            <li>To determine which ID to enter for each field, refer to the available options in the corresponding reference tables: <code>DT_EyeColor</code>, <code>DT_SkinTone</code>, <code>DT_HairTexture</code> and <code>DT_HairColor</code>. If you need greater variety, add new rows and data to these tables.</li>
+          </ol>
+
+          <figure class="guide-figure">
+            <img src="assets/guide/01-dt-parents-table.png" alt="DT_Parents data table showing genetic fields for a parent row in Unreal Engine 5" loading="lazy">
+            <figcaption>Registering a new parent's genetic fields in <code>DT_Parents</code>.</figcaption>
+          </figure>
+        </article>
+
+        <!-- ---------- 02 ---------- -->
+        <article class="guide-section reveal" id="geometry-extraction">
+          <p class="guide-step-num">02</p>
+          <h2>Facial geometry extraction</h2>
+          <span class="step-tag">Unreal Engine 5</span>
+          <p class="guide-lead">
+            The project includes a <code>GeneticChild_Template.blend</code> file containing the exported base model,
+            configured vertex groups, and morph targets for the example parents. 
+          </p>
+          <div class="note-box">
+            <h4>Using a custom child model</h4>
+              <p>
+                If you are using a custom child model instead of the one provided with the template, complete the following preparation before starting Stage 2. 
+                First, conform the model in Unreal Engine by following the workflow described below. Then, export it to Blender and import it alongside the original rigged child model. 
+                Transfer the vertex weights from the original model to the conformed mesh using the Data Transfer modifier, bind it to the original armature using Armature Deform, 
+                and recreate the facial vertex groups (eyes, nose, mouth, neck, ears, and headshape). Once these steps are complete, continue with Stage 2. 
+              </p>
+          </div>
+          <p class="guide-lead">To ensure all new models share the same vertex topology and can be interpolated with the base model, extract a normalized mesh from each one:</p>
+
+          <ol class="guide-steps">
+            <li>Create a new <strong>MetaHuman Identity</strong> component for each new parent you want to integrate.</li>
+            <li>Open the component and go to <strong>Create Components &rarr; From Mesh</strong>, selecting the Skeletal Face Mesh component of the corresponding parent model.</li>
+            <li>Make sure the face is looking forward and centered. Click <strong>Promote Frame</strong>, then <strong>Track Markers (Active Frame)</strong>. Verify that the generated markers (green points) correctly follow the facial features, and reposition any misaligned ones manually before exporting.</li>
+            <li>Open the Unreal Engine command console and enter <code>mh.Identity.ExportMeshes 1</code>. Then click the <strong>MetaHuman Identity Solve</strong> button.</li>
+            <li>Locate the resulting <code>.OBJ</code> mesh inside the project's <code>Saved</code> folder, in a subfolder with the same name as the component.</li>
+          </ol>
+
+          <figure class="guide-figure">
+            <img src="assets/guide/02-identity-tracking.png" alt="MetaHuman Identity component with tracking markers over a parent model's facial features" loading="lazy">
+            <figcaption>Tracked markers on the active frame.</figcaption>
+          </figure>
+
+          <figure class="guide-figure guide-figure-wide">
+            <img src="assets/guide/02-export-console.png" alt="Exported normalized meshes with mh.Identity.ExportMeshes 1 command" loading="lazy">
+            <figcaption>Exported normalized mesh via console command.</figcaption>
+          </figure>
+        </article>
+
+        <!-- ---------- 03 ---------- -->
+        <article class="guide-section reveal" id="morph-generation">
+          <p class="guide-step-num">03</p>
+          <h2>Morph target generation &amp; segmentation</h2>
+          <span class="step-tag">Blender</span>
+          <p class="guide-lead">In this stage, the parents' facial proportions are transferred to the child model using vertex masks to isolate each facial feature.</p>
+
+          <ol class="guide-steps">
+            <li>Open the provided <code>GeneticChild_Template.blend</code> file and import the <code>.OBJ</code> files of the parent meshes generated in the previous step, using the import settings shown below.</li>
+          </ol>
+
+          <figure class="guide-figure">
+            <img src="assets/guide/03-import-settings.png" alt="Blender OBJ import settings used for parent meshes" loading="lazy">
+            <figcaption>Import settings for the parent <code>.OBJ</code> meshes.</figcaption>
+          </figure>
+
+          <ol class="guide-steps" start="2">
+            <li>Select the imported meshes, set their scale to <code>0.01</code>, and apply the transformation with <strong>Ctrl + A &rarr; Scale</strong>.</li>
+            <li>Align the parent model as closely as possible with the child's base model and apply the transformation with <strong>Ctrl + A &rarr; Location</strong>. Make sure both rotation and position are set to <code>(0,0,0)</code>.</li>
+            <li>While holding <strong>Shift</strong>, first select the child's base mesh (<code>Base_Mesh</code>) and then the parent mesh. In the Properties panel, open the Shape Keys drop-down menu and select <strong>Join as Shapes</strong>.</li>
+            <li>A new general Shape Key is added to the list. Give it a descriptive name, then delete the parent mesh from the scene &mdash; it's no longer needed. Repeat for the remaining parent models.</li>
+          </ol>
+
+          <figure class="guide-figure guide-figure-wide">
+            <img src="assets/guide/03-join-as-shapes.png" alt="Blender Shape Keys panel" loading="lazy">
+            <figcaption>Joining the parent mesh as a new shape key on the base child.</figcaption>
+          </figure>
+
+          <ol class="guide-steps" start="6">
+            <li>To generate independent morph targets for each facial region, open Blender's <strong>Scripting</strong> workspace and paste the automation script provided with the template.</li>
+          </ol>
+
+          <figure class="guide-figure">
+            <img src="assets/guide/03-scripting-workspace.png" alt="Blender Scripting workspace with the segmentation automation script" loading="lazy">
+            <figcaption>The segmentation script, ready to run per vertex group.</figcaption>
+          </figure>
+
+          <ol class="guide-steps" start="7">
+            <li>In the script, set <code>SOURCE_SHAPE</code> to the name of the newly created parent's general morph.</li>
+            <li>Set <code>MASK_GROUP</code> to the name of the vertex group you want to process, visible under Vertex Groups (e.g. <code>Mask_Nose</code>, <code>Mask_Mouth</code>).</li>
+            <li>Set <code>NEW_SHAPE</code> to the name of the new specific morph, using the <code>Dad(number)_</code> or <code>Mom(number)_</code> prefix so Unreal Engine recognizes it.</li>
+            <li>Run the script once per <code>MASK_GROUP</code>.</li>
+          </ol>
+
+          <figure class="guide-figure guide-figure-wide">
+            <img src="assets/guide/03-script-variables.png" alt="Segmentation script variables SOURCE_SHAPE, MASK_GROUP and NEW_SHAPE" loading="lazy">
+            <figcaption><code>SOURCE_SHAPE</code>, <code>MASK_GROUP</code> and <code>NEW_SHAPE</code> set for one facial feature.</figcaption>
+          </figure>
+
+          <ol class="guide-steps" start="11">
+            <li>Once all specific morphs have been generated, remove the parents' general morphs from the list (e.g. <code>Dad02</code>, <code>Mom02</code>).</li>
+            <li>In the scene hierarchy, enable visibility of the <code>Child_FaceMesh</code> root component so the model exports together with its bones.</li>
+            <li>Select the entire <code>Child_FaceMesh</code> object and its components, then go to <strong>File &rarr; Export &rarr; FBX</strong>. Enable <strong>Selected Objects</strong>, select only <strong>Armature</strong> and <strong>Mesh</strong> under Object Types, and enable <strong>Animation</strong> before exporting.</li>
+          </ol>
+        </article>
+
+        <!-- ---------- 04 ---------- -->
+        <article class="guide-section reveal" id="mutable-integration">
+          <p class="guide-step-num">04</p>
+          <h2>Mutable system integration</h2>
+          <span class="step-tag">Unreal Engine 5</span>
+          <p class="guide-lead">Finally, the new model and its deformation parameters are linked to Mutable.</p>
+
+          <ol class="guide-steps">
+            <li>Return to Unreal Engine, drag the new <code>.FBX</code> file into the Content Browser, and import it using the default settings. This generates a new Skeletal Mesh.</li>
+            <li>Open the new Skeletal Mesh, assign the <code>MI_HeadSynthesized_Baked</code> material (in the <code>Amelia</code> folder) to its material slot, and save.</li>
+            <li>Open <code>CO_Child_Genetics</code> in the <code>Mutable</code> folder. Within the graph, locate the <strong>HEAD</strong> section and replace the old Skeletal Mesh (<code>SKM_GeneticChild</code>) with the newly imported asset.</li>
+            <li>In the node's Details panel, go to <strong>Real Time Morph Targets</strong> and enable the checkboxes for the new morph targets (disabled by default). Save and compile <code>CO_Child_Genetics</code>.</li>
+          </ol>
+
+          <figure class="guide-figure">
+            <img src="assets/guide/04-realtime-morph-targets.png" alt="Real Time Morph Targets checkboxes in the CO_Child_Genetics details panel" loading="lazy">
+            <figcaption>Enabling the new morph targets on the Mutable node.</figcaption>
+          </figure>
+
+          <ol class="guide-steps" start="5">
+            <li>Open <code>DT_Parents</code> again and, in the <code>MorphPrefix</code> column, enter the exact prefix used when creating the morphs in Blender (e.g. <code>Dad01</code>, <code>Mom01</code>).</li>
+            <li>Finally, in the Content Browser, right-click the old base Skeletal Mesh and select <strong>Delete</strong>.</li>
+          </ol>
+
+          <div class="callout">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="var(--lilac)" stroke-width="1.6"/><path d="M12 8v5" stroke="var(--lilac)" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="16" r="1" fill="var(--lilac)"/></svg>
+            <p><strong>Important:</strong> before confirming the deletion, a reference consolidation window will appear. Select your new Skeletal Mesh and click <strong>Replace References</strong> to prevent reference-linking errors.</p>
+          </div>
+
+          <figure class="guide-figure guide-figure-wide">
+            <img src="assets/guide/04-reference-consolidation.png" alt="Reference consolidation window prompting to replace references before deleting the old skeletal mesh" loading="lazy">
+            <figcaption>Replacing references before deleting the old base Skeletal Mesh.</figcaption>
+          </figure>
+        </article>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>MetaGen &mdash; developed by <strong><a href="https://www.linkedin.com/in/carla-puga-p%C3%A9rez/" target="_blank" rel="noopener" style="text-decoration: underline; text-underline-offset: 4px;">Carla Puga Pérez</a></strong> as a Bachelor's Thesis.</p>
+    <a href="#" class="back-to-top">Back to top &uarr;</a>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script src="guide.js"></script>
+</body>
+</html>

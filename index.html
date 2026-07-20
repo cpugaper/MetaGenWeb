@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MetaGen — Genetic Inheritance System for MetaHumans</title>
+<meta name="description" content="MetaGen is a real-time Mendelian genetic inheritance system for MetaHumans, built for Unreal Engine 5 as a Bachelor's Thesis.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- decorative background grid / glow, purely visual -->
+<div class="bg-glow" aria-hidden="true"></div>
+
+<header class="site-header" id="site-header">
+  <div class="container header-inner">
+    <a href="#home" class="brand">
+      MetaGen
+    </a>
+
+    <nav class="main-nav" id="main-nav">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#results" class="nav-link">Results</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#development" class="nav-link">Development</a>
+      <a href="#guide" class="nav-link">Guide</a>
+      <a href="#feedback" class="nav-link">Feedback</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="https://github.com/cpugaper/MetaGen" class="btn btn-ghost btn-small" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        GitHub
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HOME / HERO ============ -->
+  <section class="hero" id="home">
+    <div class="container hero-inner">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Unreal Engine 5 · MetaHumans</p>
+        <h1 class="hero-title">Meta<span class="grad-text">Gen</span></h1>
+        <p class="hero-tagline">Generate realistic MetaHuman families in a single click</p>
+        <p class="hero-desc">
+          MetaGen is a procedural generation system for Unreal Engine 5 that 
+          automates the creation of MetaHuman offspring from two selected parents. 
+          By combining Mendelian genetics with real-time facial morphing, 
+          it generates a unique child in seconds instead of hours of manual character sculpting.
+        </p>
+        <p class="status-line reveal"><span class="status-dot"></span>Prototype &middot; actively in development</p>
+        <div class="hero-actions">
+          <a href="https://github.com/cpugaper/MetaGen" class="btn btn-primary" target="_blank" rel="noopener">
+            View on GitHub
+            <svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true"><path d="M4 12L12 4M12 4H5M12 4V11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#development" class="btn btn-ghost">See the pipeline</a>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal" aria-hidden="true">
+        <img
+        src="assets/homeImg.png"
+        alt=""
+        class="hero-image">
+      </div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true"><span></span></div>
+  </section>
+
+  <!-- ============ RESULTS ============ -->
+<section class="section" id="results">
+    <div class="container">
+  
+      <div class="section-head reveal">
+        <p class="eyebrow">Generated Results</p>
+        <h2>Believable families, generated in seconds.</h2>
+        <p class="section-desc">
+          Every child is procedurally generated from two selected MetaHuman parents,
+          preserving recognizable family traits while producing unique descendants.
+        </p>
+      </div>
+  
+      <div class="results-showcase reveal">
+          <img src="assets/children.png" alt="Generated MetaHuman children" class="showcase-img">
+      </div>
+  
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="section section-alt" id="about">
+    <div class="container">
+      <div class="about-overview reveal">
+        <div class="section-head">
+          <p class="eyebrow">Overview</p>
+          <h2>About MetaGen</h2>
+          <p class="section-desc">
+            MetaGen is a real-time genetic inheritance system for MetaHumans, built for Unreal Engine 5 as a Bachelor's Thesis.
+            Select two parents to generate a wide variety of descendants, with every result still open to final user customization.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature-card reveal">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M6 3v6a6 6 0 006 6 6 6 0 006-6V3M6 21v-6a6 6 0 016-6 6 6 0 016 6v6" stroke="url(#g1)" stroke-width="1.6" stroke-linecap="round"/><defs><linearGradient id="g1" x1="0" y1="0" x2="24" y2="24"><stop offset="0" stop-color="var(--blue)"/><stop offset="1" stop-color="var(--lilac)"/></linearGradient></defs></svg>
+            </div>
+            <h3>Mendelian genetics</h3>
+            <p>Eye color, skin tone, hair texture and hair color follow Mendelian dominance rules.</p>
+          </div>
+
+          <div class="feature-card reveal">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M4 12h4l2-7 4 14 2-7h4" stroke="url(#g2)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="g2" x1="0" y1="0" x2="24" y2="24"><stop offset="0" stop-color="var(--blue)"/><stop offset="1" stop-color="var(--lilac)"/></linearGradient></defs></svg>
+            </div>
+            <h3>Real-time morph targets</h3>
+            <p>Facial structure is generated by interpolating segmented morph targets from both parents at runtime.</p>
+          </div>
+
+          <div class="feature-card reveal">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><circle cx="7" cy="7" r="3" stroke="url(#g3)" stroke-width="1.6"/><circle cx="17" cy="7" r="3" stroke="url(#g3)" stroke-width="1.6"/><circle cx="12" cy="18" r="3.5" stroke="url(#g3)" stroke-width="1.6"/><defs><linearGradient id="g3" x1="0" y1="0" x2="24" y2="24"><stop offset="0" stop-color="var(--blue)"/><stop offset="1" stop-color="var(--lilac)"/></linearGradient></defs></svg>
+            </div>
+            <h3>6 parents, 1 base child</h3>
+            <p>Ships with six pre-configured parent models and a base child mesh.</p>
+          </div>
+
+          <div class="feature-card reveal">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M12 3v18M3 12h18" stroke="url(#g4)" stroke-width="1.6" stroke-linecap="round"/><path d="M7 7l10 10M17 7L7 17" stroke="url(#g4)" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><defs><linearGradient id="g4" x1="0" y1="0" x2="24" y2="24"><stop offset="0" stop-color="var(--blue)"/><stop offset="1" stop-color="var(--lilac)"/></linearGradient></defs></svg>
+            </div>
+            <h3>Built to extend</h3>
+            <p>A documented production pipeline lets you add your own custom parent characters to the pool.</p>
+          </div>
+        </div>
+        <div class="callout reveal">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="var(--lilac)" stroke-width="1.6"/><path d="M12 8v5" stroke="var(--lilac)" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="16" r="1" fill="var(--lilac)"/></svg>
+          <p><strong>Current scope:</strong> MetaGen is a real-time generation and preview prototype. Persistent saving &mdash; exporting generated characters and runtime mesh modifications back to editor assets &mdash; isn't supported yet; it's the focus of ongoing development.</p>
+        </div>
+      </div>
+      <div class="about-divider"></div>
+      <div class="about-workflow">
+        <div class="section-head small-head reveal">
+          <p class="eyebrow">Runtime Workflow</p>
+          <h3>How it works</h3>
+          <p class="section-desc">A quick breakdown of the user interface and operation pipeline inside Unreal Engine.</p>
+        </div>
+
+        <div class="workflow-row reveal">
+          <div class="workflow-media">
+            <img src="assets/selectionGuide.png" alt="MetaGen selection scene interface" class="workflow-img">
+          </div>
+          <div class="workflow-info">
+            <span class="step-badge">Phase 01 - Parental selection</span>
+            <p class="workflow-intro">Execute <code>ParentSelection</code> inside the <code>Content</code> folder to start the program.</p>
+            
+            <div class="workflow-legend-clean">
+              <div class="legend-item-clean">
+                <span class="legend-dot-clean">1</span>
+                <div class="legend-content-clean">
+                  <span class="legend-title-clean">Dropdown menus</span>
+                  <span class="legend-desc-clean">Select the parent models.</span>
+                </div>
+              </div>
+              <div class="legend-item-clean">
+                <span class="legend-dot-clean">2</span>
+                <div class="legend-content-clean">
+                  <span class="legend-title-clean">Generate child button</span>
+                  <span class="legend-desc-clean">Triggers genetic logic and opens the customization hub.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="workflow-row reverse reveal">
+          <div class="workflow-media">
+            <img src="assets/customizationGuide.png" alt="MetaGen customization scene interface" class="workflow-img">
+          </div>
+          <div class="workflow-info">
+            <span class="step-badge">Phase 02 - Dynamic customization</span>
+            <div class="workflow-legend-grid">
+              <div class="legend-item-clean">
+                <span class="legend-dot-clean">1</span>
+                <div class="legend-content-clean">
+                  <span class="legend-title-clean">Gender swap</span>
+                  <span class="legend-desc-clean">Toggles offspring gender while preserving traits.</span>
+                </div>
+              </div>
+              <div class="legend-item-clean">
+                <span class="legend-dot-clean">2</span>
+                <div class="legend-content-clean">
+                  <span class="legend-title-clean">Randomize offspring</span>
+                  <span class="legend-desc-clean">Generate a new random mix from the same parents.</span>
+                </div>
+              </div>
+              <div class="legend-item-clean">
+                <span class="legend-dot-clean">3</span>
+                <div class="legend-content-clean">
+                  <span class="legend-title-clean">Customization menus</span>
+                  <span class="legend-desc-clean">Fine-tune facial structure, hair types and hair/eye/skin color.</span>
+                </div>
+              </div>
+              <div class="legend-item-clean">
+                <span class="legend-dot-clean">4</span>
+                <div class="legend-content-clean">
+                  <span class="legend-title-clean">Genetic filter toggle</span>
+                  <span class="legend-desc-clean">Switch between parental constraints and global options.</span>
+                </div>
+              </div>
+              <div class="legend-item-clean">
+                <span class="legend-dot-clean">5</span>
+                <div class="legend-content-clean">
+                  <span class="legend-title-clean">360º view control</span>
+                  <span class="legend-desc-clean">Click and drag left mouse button to rotate the model.</span>
+                </div>
+              </div>
+              <div class="legend-item-clean">
+                <span class="legend-dot-clean">6</span>
+                <div class="legend-content-clean">
+                  <span class="legend-title-clean">Return button</span>
+                  <span class="legend-desc-clean">Go back to the initial selection scene.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+
+  <!-- ============ SHOWCASE ============ -->
+  <section class="section section-alt" id="development">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Development Pipeline</p>
+        <h2>From Blender to Unreal Engine</h2>
+        <p class="section-desc">This one-minute overview summarizes the complete development workflow behind MetaGen, from preparing facial morph targets in Blender to generating procedural descendants in Unreal Engine 5.</p>
+      </div>
+
+      <div class="video-frame reveal">
+        <video controls poster="assets/video-cover.png">
+            <source src="assets/metagen.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GUIDE (teaser) ============ -->
+  <section class="section" id="guide">
+    <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">For Developers</p>
+          <h2>Integrate your own parent characters</h2>
+          <p class="section-desc">
+            Want to expand the genetic pool? Download the template and follow the accompanying documentation to integrate your own custom parental models.
+            The guide covers the following implementation steps:
+          </p>
+          <ul class="guide-teaser-list">
+            <li><span class="step-num-sm">01</span> Mendelian trait configuration</li>
+            <li><span class="step-num-sm">02</span> Facial geometry extraction</li>
+            <li><span class="step-num-sm">03</span> Morph target generation &amp; segmentation</li>
+            <li><span class="step-num-sm">04</span> Mutable system integration</li>
+          </ul>
+          <div class="hero-actions">
+            <a href="guide.html" class="btn btn-primary">
+              Read the full guide
+              <svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true"><path d="M4 12L12 4M12 4H5M12 4V11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <span class="guide-teaser-note">Includes the <code>.blend</code> template &amp; every screenshot</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEEDBACK ============ -->
+  <section class="section section-alt" id="feedback">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Get in Touch</p>
+        <h2>Found a bug? Have feedback?</h2>
+        <p class="section-desc">This is an early prototype, reports and suggestions are genuinely welcome.</p>
+      </div>
+
+      <div class="contact-grid">
+        <a href="https://github.com/cpugaper/MetaGen/issues/new" class="contact-card reveal" target="_blank" rel="noopener">
+          <div class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none"><circle cx="12" cy="12" r="9" stroke="var(--blue)" stroke-width="1.6"/><path d="M12 8v5" stroke="var(--blue)" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="16" r="1" fill="var(--blue)"/></svg>
+          </div>
+          <h3>Report a bug</h3>
+          <p>Open an issue on GitHub.</p>
+          <span class="contact-cta">Open an issue &rarr;</span>
+        </a>
+
+        <button class="contact-card contact-card-btn reveal" id="copy-email" type="button">
+          <div class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="var(--lilac)" stroke-width="1.6"/><path d="M3 7l9 6 9-6" stroke="var(--lilac)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Send an email</h3>
+          <p id="email-text">cpugaper@gmail.com</p>
+          <span class="contact-cta" id="copy-cta">Click to copy &rarr;</span>
+        </button>
+        <a href="https://www.linkedin.com/in/carla-puga-p%C3%A9rez/" class="contact-card reveal" target="_blank" rel="noopener">
+          <div class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--blue)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </div>
+          <h3>Connect on LinkedIn</h3>
+          <p>Carla Puga Pérez</p>
+          <span class="contact-cta">View profile &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>MetaGen &mdash; developed by <strong><a href="https://www.linkedin.com/in/carla-puga-p%C3%A9rez/" target="_blank" rel="noopener" style="text-decoration: underline; text-underline-offset: 4px;">Carla Puga Pérez</a></strong> as a Bachelor's Thesis.</p>
+    <a href="#home" class="back-to-top">Back to top &uarr;</a>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
